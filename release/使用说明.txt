@@ -1,0 +1,8 @@
+职配助手桌面版使用说明
+
+1. 双击 jobfit-assistant.exe 即可打开。
+2. 本地求职诊断、简历模板、简历优化、招聘筛选等基础功能可以直接使用。
+3. AI 分析需要在软件右上角设置里选择服务商预设，填写自己的 DeepSeek/OpenAI API Key，并开启 AI 授权。没有 Key 也能用本地分析。
+4. 如果打不开，通常是电脑缺少 Microsoft Edge WebView2 Runtime。Windows 10/11 大多数已自带，少数电脑需要单独安装 WebView2。
+5. 简历导入当前支持 txt/md 文本简历；Word/PDF 后续版本再接文档解析或 AI 识别。
+6. 本版本是测试用单文件版，不是正式安装包。

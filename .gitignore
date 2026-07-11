@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.npm-cache/
+.tools/
+.agents/
+src-tauri/target/
+*.log
+release/*.exe
+release/*.zip
