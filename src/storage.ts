@@ -1,5 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { defaultState } from "./data";
+import { buildLocalDataExportPayload } from "./dataExport";
 import { buildLocalDataFileName } from "./reportExport";
 import type { AnalysisRecord, AppState } from "./types";
 
@@ -71,21 +72,6 @@ function parseRecord(raw: string): AnalysisRecord | null {
     console.warn("Saved analysis record is not readable; skipping it", error);
     return null;
   }
-}
-
-function buildExportPayload(state: AppState, records: AnalysisRecord[]) {
-  return {
-    state: {
-      ...state,
-      aiConfig: {
-        ...state.aiConfig,
-        apiKey: ""
-      }
-    },
-    records,
-    exportedAt: new Date().toISOString(),
-    note: "AI API Key has been removed from this export."
-  };
 }
 
 export async function loadState(): Promise<AppState> {
@@ -174,7 +160,7 @@ export async function clearAnalysisRecords(): Promise<void> {
 }
 
 export function exportLocalData(state: AppState, records: AnalysisRecord[]) {
-  const blob = new Blob([JSON.stringify(buildExportPayload(state, records), null, 2)], {
+  const blob = new Blob([JSON.stringify(buildLocalDataExportPayload(state, records), null, 2)], {
     type: "application/json;charset=utf-8"
   });
   const url = URL.createObjectURL(blob);
